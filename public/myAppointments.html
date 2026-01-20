@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Appointment - My Appointments</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="brand">Smart Appointment</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="appointment.html">Book</a>
+      <a href="myAppointments.html">My Appointments</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="page page--myAppointments container">
+    <h1 class="page-title">My Appointments</h1>
+    <p class="lead">Check and manage your appointments</p>
+
+    <div class="card">
+      <table style="width:100%; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="appointmentsTable">
+          <!-- Appointments will appear here -->
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    &copy; <span id="year"></span> Smart Appointment
+  </footer>
+
+  <script>
+    document.getElementById("year").innerText = new Date().getFullYear();
+
+    // Dummy data from Book Appointment page
+    let appointments = JSON.parse(localStorage.getItem("appointments") || "[]");
+
+    function renderAppointments() {
+      const tbody = document.getElementById("appointmentsTable");
+      tbody.innerHTML = "";
+      appointments.forEach((app, index) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${app.name}</td>
+          <td>${app.email}</td>
+          <td>${app.date}</td>
+          <td>${app.time}</td>
+          <td>
+            <button class="btn btn-ghost" onclick="editAppointment(${index})">Edit</button>
+            <button class="btn btn-ghost" onclick="deleteAppointment(${index})">Cancel</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function editAppointment(index) {
+      const app = appointments[index];
+      const newName = prompt("Edit Name:", app.name);
+      const newEmail = prompt("Edit Email:", app.email);
+      const newDate = prompt("Edit Date (YYYY-MM-DD):", app.date);
+      const newTime = prompt("Edit Time (HH:MM):", app.time);
+      if(newName && newEmail && newDate && newTime){
+        appointments[index] = {name:newName, email:newEmail, date:newDate, time:newTime};
+        localStorage.setItem("appointments", JSON.stringify(appointments));
+        renderAppointments();
+      }
+    }
+
+    function deleteAppointment(index) {
+      if(confirm("Are you sure to cancel this appointment?")){
+        appointments.splice(index,1);
+        localStorage.setItem("appointments", JSON.stringify(appointments));
+        renderAppointments();
+      }
+    }
+
+    renderAppointments();
+  </script>
+
+</body>
+</html>

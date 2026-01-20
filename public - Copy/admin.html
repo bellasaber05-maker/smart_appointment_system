@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Appointment - Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="brand">Smart Appointment</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="appointment.html">Book</a>
+      <a href="myAppointments.html">My Appointments</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="page page--admin container">
+    <h1 class="page-title">Admin Panel</h1>
+    <p class="lead">Manage all appointments</p>
+
+    <div class="card">
+      <table style="width:100%; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="appointmentsTable">
+          <!-- Appointments will appear here -->
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    &copy; <span id="year"></span> Smart Appointment
+  </footer>
+
+  <script>
+    document.getElementById("year").innerText = new Date().getFullYear();
+
+    // Dummy data
+    let appointments = JSON.parse(localStorage.getItem("appointments") || "[]");
+
+    // Add status if not exist
+    appointments = appointments.map(app => ({...app, status: app.status || "Pending"}));
+
+    function renderAppointments() {
+      const tbody = document.getElementById("appointmentsTable");
+      tbody.innerHTML = "";
+      appointments.forEach((app, index) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${app.name}</td>
+          <td>${app.email}</td>
+          <td>${app.date}</td>
+          <td>${app.time}</td>
+          <td>${app.status}</td>
+          <td>
+            <button class="btn btn-ghost" onclick="updateStatus(${index}, 'Accepted')">Accept</button>
+            <button class="btn btn-ghost" onclick="updateStatus(${index}, 'Rejected')">Reject</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      localStorage.setItem("appointments", JSON.stringify(appointments));
+    }
+
+    function updateStatus(index, newStatus){
+      appointments[index].status = newStatus;
+      renderAppointments();
+    }
+
+    renderAppointments();
+  </script>
+
+</body>
+</html>

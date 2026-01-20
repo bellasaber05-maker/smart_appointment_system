@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Appointment - Book Appointment</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="brand">Smart Appointment</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="appointment.html">Book</a>
+      <a href="myAppointments.html">My Appointments</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="page page--appointment container">
+    <h1 class="page-title">Book an Appointment</h1>
+    <p class="lead">Choose your preferred date and time</p>
+
+    <div class="card">
+      <form id="bookForm">
+        <div class="form-row">
+          <input type="text" class="input" id="username" placeholder="Your Name" required>
+        </div>
+        <div class="form-row">
+          <input type="email" class="input" id="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-row">
+          <label for="date">Select Date:</label>
+          <input type="date" class="input" id="date" required>
+        </div>
+        <div class="form-row">
+          <label for="time">Select Time:</label>
+          <input type="time" class="input" id="time" required>
+        </div>
+        <div class="form-row">
+          <button type="submit" class="btn">Submit Appointment</button>
+          <button type="button" class="btn btn-ghost" onclick="window.location.href='myAppointments.html'">View My Appointments</button>
+        </div>
+      </form>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    &copy; <span id="year"></span> Smart Appointment
+  </footer>
+
+  <script>
+    document.getElementById("year").innerText = new Date().getFullYear();
+
+    // Dummy Booking Logic
+    let appointments = []; // بيانات مؤقتة
+    document.getElementById("bookForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const name = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+
+      if(name && email && date && time){
+        appointments.push({name, email, date, time});
+        alert("Appointment Booked Successfully!");
+        // بعد الحجز ممكن يروح لصفحة My Appointments
+        window.location.href = "myAppointments.html";
+      } else {
+        alert("Please fill all fields");
+      }
+    });
+  </script>
+
+</body>
+</html>

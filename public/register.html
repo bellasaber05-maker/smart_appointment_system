@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Appointment - Register</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="brand">Smart Appointment</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="appointment.html">Book</a>
+      <a href="myAppointments.html">My Appointments</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="page page--register container">
+    <h1 class="page-title">Register</h1>
+    <p class="lead">Create a new account</p>
+
+    <div class="card">
+      <form id="registerForm">
+        <div class="form-row">
+          <input type="text" class="input" id="username" placeholder="Username" required>
+        </div>
+        <div class="form-row">
+          <input type="email" class="input" id="email" placeholder="Email" required>
+        </div>
+        <div class="form-row">
+          <input type="password" class="input" id="password" placeholder="Password" required>
+        </div>
+        <div class="form-row">
+          <button type="submit" class="btn">Register</button>
+          <button type="button" class="btn btn-ghost" onclick="window.location.href='login.html'">Go to Login</button>
+        </div>
+      </form>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    &copy; <span id="year"></span> Smart Appointment
+  </footer>
+
+  <script>
+    document.getElementById("year").innerText = new Date().getFullYear();
+
+    // Dummy Register Logic
+    document.getElementById("registerForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      let username = document.getElementById("username").value;
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+
+      if(username && email && password){
+        alert("Account Created! Redirecting to Login...");
+        window.location.href = "login.html";
+      } else {
+        alert("Please fill all fields");
+      }
+    });
+  </script>
+
+</body>
+</html>
