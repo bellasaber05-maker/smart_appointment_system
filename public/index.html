@@ -1,52 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Appointment - Home</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
 
-  <header class="navbar">
-    <div class="brand">Smart Appointment</div>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="login.html">Login</a>
-      <a href="register.html">Register</a>
-      <a href="appointment.html">Book</a>
-      <a href="myAppointments.html">My Appointments</a>
-      <a href="admin.html">Admin</a>
-    </nav>
-  </header>
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
 
-  <main class="page page--home container">
-    <h1 class="page-title">Welcome to Smart Appointment System</h1>
-    <p class="lead">Book, manage, and track your appointments easily!</p>
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
 
-    <div class="card">
-      <h2>Quick Actions</h2>
-      <div class="grid grid-2">
-        <div>
-          <h3>Book Now</h3>
-          <button class="btn" onclick="window.location.href='appointment.html'">Book Appointment</button>
-        </div>
-        <div>
-          <h3>View My Appointments</h3>
-          <button class="btn btn-ghost" onclick="window.location.href='myAppointments.html'">My Appointments</button>
-        </div>
-      </div>
-    </div>
-
-  </main>
-
-  <footer class="footer">
-    &copy; <span id="year"></span> Smart Appointment
-  </footer>
-
-  <script>
-    document.getElementById("year").innerText = new Date().getFullYear();
-  </script>
-
-</body>
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
 </html>
