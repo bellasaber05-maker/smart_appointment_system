@@ -1,42 +1,105 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* الخلفية المتحركة */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(270deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb, #84fab0, #8fd3f4);
+  background-size: 1200% 1200%;
+  animation: gradientBG 20s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 50%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 15px 30px;
+  background: rgba(255, 255, 255, 0.25); /* شفافية */
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 30px;
+}
+
+/* الروابط */
+.navbar a {
+  text-decoration: none;
+  color: #222;
+  padding: 5px 12px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+/* الصفحة الحالية */
+.navbar a.active {
+  background: rgba(255,255,255,0.4);
+}
+
+/* Hover effect */
+.navbar a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+}
+
+/* رسالة الترحيب */
+.welcome {
+  margin: 30px auto;
   text-align: center;
+  color: #222;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.welcome h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.welcome p {
+  font-size: 18px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* الدائرة الرئيسية */
+.circle {
+  margin: 50px auto;
+  width: 450px;
+  padding: 50px;
+  border-radius: 30%;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  font-size: 18px;
 }
 
-.card {
-  padding: 2em;
+/* Inputs و Buttons و Textarea */
+input, button, textarea {
+  width: 80%;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 25px;
+  border: none;
+  font-size: 16px;
 }
 
-.read-the-docs {
-  color: #888;
+/* Buttons */
+button {
+  background-color: #fff;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transform: scale(1.05);
 }
